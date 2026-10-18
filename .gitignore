@@ -1,0 +1,7 @@
+node_modules/
+qdrant_storage/
+.env
+.vscode/
+AGENTS.md
+eval/cache.json
+eval/report.json

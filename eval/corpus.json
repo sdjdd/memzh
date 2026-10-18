@@ -1,0 +1,127 @@
+{
+  "conversations": [
+    {
+      "id": "c01",
+      "date": "2026-10-12",
+      "expectEntities": ["老公", "辣椒"],
+      "messages": [
+        {
+          "role": "user",
+          "content": "我口味偏清淡，做菜基本不放辣椒。我老公倒是无辣不欢，他那份我单独加辣。"
+        },
+        { "role": "assistant", "content": "好的，一锅两味分开调味，家常菜也能照顾到两边的口味。" },
+        { "role": "user", "content": "对，就说今天晚饭吧，我打算做蒜蓉西兰花和麻辣香锅，分开做。" },
+        { "role": "assistant", "content": "蒜蓉西兰花清爽，麻辣香锅解馋，这个搭配很合理。" }
+      ]
+    },
+    {
+      "id": "c02",
+      "date": "2026-10-12",
+      "expectEntities": ["番茄", "意面"],
+      "messages": [
+        { "role": "user", "content": "我家孩子最爱吃我做的番茄鸡蛋意面，一次能吃一大盘。" },
+        { "role": "assistant", "content": "小孩子喜欢酸甜口的很正常，番茄意面营养也均衡。" },
+        { "role": "user", "content": "所以我家冰箱常备番茄和鸡蛋，意面从来不断货。" }
+      ]
+    },
+    {
+      "id": "c03",
+      "date": "2026-10-13",
+      "expectEntities": ["小雨", "钢琴"],
+      "messages": [
+        { "role": "user", "content": "我女儿叫小雨，今年五岁，在学钢琴。" },
+        { "role": "assistant", "content": "五岁开始学琴正是好年纪，坚持练习进步会很快。" },
+        { "role": "user", "content": "她每周六上午有一节钢琴课，我得提前一天把琴谱整理好。" }
+      ]
+    },
+    {
+      "id": "c04",
+      "date": "2026-10-13",
+      "expectEntities": ["高血压"],
+      "messages": [
+        { "role": "user", "content": "我爸有高血压，每天早晚各量一次血压，数据都记在本子上。" },
+        { "role": "assistant", "content": "坚持记录血压很好，复诊的时候给医生看更有参考价值。" },
+        { "role": "user", "content": "我每周日晚上都会跟他视频通话，顺便提醒他量血压。" }
+      ]
+    },
+    {
+      "id": "c05",
+      "date": "2026-10-15",
+      "expectEntities": ["上海"],
+      "messages": [
+        { "role": "user", "content": "我做后端开发，最近一直在赶项目上线。" },
+        { "role": "assistant", "content": "上线前节奏确实紧，注意休息。" },
+        { "role": "user", "content": "下周二我要去上海出差三天，跟客户做需求对接。" }
+      ]
+    },
+    {
+      "id": "c06",
+      "date": "2026-10-14",
+      "expectEntities": ["TypeScript", "Node"],
+      "messages": [
+        { "role": "user", "content": "我们团队后端都用 TypeScript 和 Node，前端是另一个组负责。" },
+        { "role": "assistant", "content": "技术栈统一对协作很有帮助。" },
+        { "role": "user", "content": "我现在带一个实习生，他九月底就转正了。" }
+      ]
+    },
+    {
+      "id": "c07",
+      "date": "2026-10-11",
+      "messages": [
+        { "role": "user", "content": "我每天早上六点半起床，一周跑步三次。" },
+        { "role": "assistant", "content": "保持规律运动很棒，跑前记得热身。" },
+        { "role": "user", "content": "下雨天跑不了，我就在家跳绳替代。" }
+      ]
+    },
+    {
+      "id": "c08",
+      "date": "2026-10-16",
+      "expectEntities": ["颈椎", "枕头"],
+      "messages": [
+        { "role": "user", "content": "我最近颈椎不舒服，去医院看了，医生说让我少低头看手机。" },
+        { "role": "assistant", "content": "久坐低头族常见，多注意姿势，工作间隙活动一下脖子。" },
+        { "role": "user", "content": "医生还建议我把枕头换成矮一点的，我打算这周末去买。" }
+      ]
+    },
+    {
+      "id": "c09",
+      "date": "2026-10-12",
+      "expectEntities": ["橘子", "鸡肉冻干"],
+      "messages": [
+        { "role": "user", "content": "我家猫叫橘子，今年三岁了。" },
+        { "role": "assistant", "content": "橘猫都容易长成小胖子，注意控制体重。" },
+        { "role": "user", "content": "它嘴很挑，猫粮只吃一种，零食只吃鸡肉冻干，别的都不碰。" }
+      ]
+    },
+    {
+      "id": "c10",
+      "date": "2026-10-15",
+      "expectEntities": ["橘子"],
+      "messages": [
+        { "role": "user", "content": "橘子每个月都要去宠物医院驱虫一次。" },
+        { "role": "assistant", "content": "定期驱虫对猫的健康很重要。" },
+        { "role": "user", "content": "就去小区东门那家店，走路五分钟就到，很方便。" }
+      ]
+    },
+    {
+      "id": "c11",
+      "date": "2026-10-17",
+      "expectEntities": ["空气炸锅"],
+      "messages": [
+        { "role": "user", "content": "双十一我打算入手一台空气炸锅，预算五百以内。" },
+        { "role": "assistant", "content": "空气炸锅做菜方便，选大牌的售后有保障。" },
+        { "role": "user", "content": "我已经把两款放购物车里了，等价格降下来再下单。" }
+      ]
+    },
+    {
+      "id": "c12",
+      "date": "2026-10-13",
+      "expectEntities": ["汉源花椒", "腊肠"],
+      "messages": [
+        { "role": "user", "content": "我妈上周从老家寄来一箱汉源花椒，香味很足。" },
+        { "role": "assistant", "content": "汉源花椒是花椒里的上品，做川菜特别香。" },
+        { "role": "user", "content": "她说过年的时候还会再给我寄腊肠。" }
+      ]
+    }
+  ]
+}

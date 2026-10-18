@@ -1,0 +1,37 @@
+{
+  "name": "memzh",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "type": "module",
+  "main": "src/index.ts",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "tsx tests/e2e.ts",
+    "test:unit": "vitest run",
+    "eval": "tsx eval/run.ts all",
+    "eval:fetch": "tsx eval/run.ts fetch",
+    "eval:sweep": "tsx eval/run.ts sweep",
+    "typecheck": "tsc --noEmit",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
+  },
+  "dependencies": {
+    "@ai-sdk/openai-compatible": "^3.0.71",
+    "@node-rs/jieba": "^2.0.4",
+    "@qdrant/js-client-rest": "^1.19.0",
+    "ai": "^7.0.143",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "oxfmt": "^0.73.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

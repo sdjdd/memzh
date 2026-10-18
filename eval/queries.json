@@ -1,0 +1,74 @@
+{
+  "queries": [
+    { "id": "q01", "intent": "exact", "q": "空气炸锅多少钱合适", "expect": ["空气炸锅"] },
+    { "id": "q02", "intent": "exact", "q": "我家猫叫什么名字", "expect": ["橘子"] },
+    { "id": "q03", "intent": "exact", "q": "女儿在学什么乐器", "expect": ["钢琴"] },
+    { "id": "q04", "intent": "exact", "q": "实习生什么时候转正", "expect": ["转正"] },
+    { "id": "q05", "intent": "exact", "q": "花椒是哪里产的", "expect": ["汉源", "花椒"] },
+    { "id": "q06", "intent": "exact", "q": "颈椎不舒服要注意什么", "expect": ["颈椎"] },
+    { "id": "q07", "intent": "exact", "q": "猫吃什么零食", "expect": ["鸡肉冻干", "冻干"] },
+
+    {
+      "id": "q08",
+      "intent": "paraphrase",
+      "q": "后端用什么编程语言",
+      "expect": ["TypeScript", "Node"]
+    },
+    {
+      "id": "q09",
+      "intent": "paraphrase",
+      "q": "配偶能吃辣吗",
+      "expect": ["老公", "丈夫", "无辣不欢"]
+    },
+    { "id": "q10", "intent": "paraphrase", "q": "孩子最爱吃什么饭", "expect": ["意面", "番茄"] },
+    { "id": "q11", "intent": "paraphrase", "q": "早晨起床后做什么运动", "expect": ["跑步"] },
+    { "id": "q12", "intent": "paraphrase", "q": "厨房想添置什么电器", "expect": ["空气炸锅"] },
+    { "id": "q13", "intent": "paraphrase", "q": "女儿今年多大了", "expect": ["五岁", "5岁"] },
+    { "id": "q14", "intent": "paraphrase", "q": "脖子疼要少做什么", "expect": ["颈椎"] },
+    {
+      "id": "q15",
+      "intent": "paraphrase",
+      "q": "家里常备哪些做菜的食材",
+      "expect": ["番茄", "鸡蛋"]
+    },
+
+    { "id": "q16", "intent": "temporal", "q": "最近有什么出行计划", "expect": ["出差", "上海"] },
+    { "id": "q17", "intent": "temporal", "q": "周六上午孩子有什么课", "expect": ["钢琴"] },
+    {
+      "id": "q18",
+      "intent": "temporal",
+      "q": "每周什么时候跟父母联系",
+      "expect": ["视频", "通话"]
+    },
+    { "id": "q19", "intent": "temporal", "q": "双十一准备买什么", "expect": ["空气炸锅"] },
+    { "id": "q20", "intent": "temporal", "q": "最近身体哪里不舒服", "expect": ["颈椎"] },
+    { "id": "q21", "intent": "temporal", "q": "过年会收到什么特产", "expect": ["腊肠"] },
+
+    { "id": "q22", "intent": "entity-bridge", "q": "橘子要定期做什么护理", "expect": ["驱虫"] },
+    {
+      "id": "q23",
+      "intent": "entity-bridge",
+      "q": "给小雨挑什么礼物好",
+      "expect": ["小雨", "钢琴"]
+    },
+    {
+      "id": "q24",
+      "intent": "entity-bridge",
+      "q": "汉源花椒做什么菜合适",
+      "expect": ["花椒", "汉源"]
+    },
+    {
+      "id": "q25",
+      "intent": "entity-bridge",
+      "q": "我爸的血压最近控制得怎么样",
+      "expect": ["高血压", "血压"]
+    },
+    { "id": "q26", "intent": "entity-bridge", "q": "橘子挑食只吃什么", "expect": ["冻干", "鸡肉"] },
+
+    { "id": "q27", "intent": "abstention", "q": "明天天气怎么样", "expect": [] },
+    { "id": "q28", "intent": "abstention", "q": "最近股市行情好不好", "expect": [] },
+    { "id": "q29", "intent": "abstention", "q": "附近有便宜的健身房吗", "expect": [] },
+    { "id": "q30", "intent": "abstention", "q": "周末想去爬山哪里合适", "expect": [] },
+    { "id": "q31", "intent": "abstention", "q": "有什么好看的科幻电影", "expect": [] }
+  ]
+}
