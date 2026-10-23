@@ -122,6 +122,52 @@
         { "role": "assistant", "content": "汉源花椒是花椒里的上品，做川菜特别香。" },
         { "role": "user", "content": "她说过年的时候还会再给我寄腊肠。" }
       ]
+    },
+    {
+      "id": "h01",
+      "date": "2026-10-14",
+      "expectEntities": ["大理", "洱海"],
+      "messages": [
+        {
+          "role": "user",
+          "content": "十一假期我和朋友去了趟大理，在洱海边住了三晚民宿，天天骑车环湖。"
+        },
+        { "role": "assistant", "content": "环洱海骑行是很经典的玩法，风小的时候湖面像镜子一样。" },
+        { "role": "user", "content": "回来我就把照片整理成了相册，下个月还打算去厦门看海。" }
+      ]
+    },
+    {
+      "id": "h02",
+      "date": "2026-10-15",
+      "expectEntities": ["弟弟", "小提琴"],
+      "messages": [
+        { "role": "user", "content": "我弟弟今年上初二，在学校乐团拉小提琴，练琴从来不用人催。" },
+        { "role": "assistant", "content": "自驱力这么强很难得，初二课业紧还能坚持练琴。" },
+        { "role": "user", "content": "他每周四放学后去排练，年底学校汇演的曲目是《欢乐颂》。" }
+      ]
+    },
+    {
+      "id": "h03",
+      "date": "2026-10-16",
+      "expectEntities": ["游泳"],
+      "messages": [
+        { "role": "user", "content": "我在游泳馆办了年卡，每周二和周五下班去游一千五百米。" },
+        { "role": "assistant", "content": "一周两游频率很稳，下水前把肩和髋充分活动开。" },
+        { "role": "user", "content": "教练夸我换气进步快，说再练一个月可以试试蛙泳提速。" }
+      ]
+    },
+    {
+      "id": "h04",
+      "date": "2026-10-17",
+      "expectEntities": ["扫拖机器人"],
+      "messages": [
+        {
+          "role": "user",
+          "content": "我刚订了一台扫拖机器人，周五送到，月底搬家前正好把旧家彻底清一遍。"
+        },
+        { "role": "assistant", "content": "搬家前让它先全屋建图，之后规划清扫路线更聪明。" },
+        { "role": "user", "content": "我特意选了带自动集尘基站的那款，贵了三百块但半年不用倒灰。" }
+      ]
     }
   ]
 }

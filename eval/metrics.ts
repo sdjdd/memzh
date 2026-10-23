@@ -9,11 +9,19 @@ import {
 export const INTENTS = ["exact", "paraphrase", "temporal", "entity-bridge", "abstention"] as const;
 export type Intent = (typeof INTENTS)[number];
 
+export type Split = "dev" | "heldout";
+
 export interface EvalQuery {
   id: string;
   intent: Intent;
   q: string;
   expect: string[];
+  /** 评测划分：dev 供网格调参与提示词迭代，heldout 只报告不参与选参；缺省视为 dev */
+  split?: Split;
+}
+
+export function splitOf(q: EvalQuery): Split {
+  return q.split ?? "dev";
 }
 
 /** covered：fetch 时核对语料库中是否存在含 expect 关键词的记忆；未覆盖说明抽取缺失，不计入检索指标 */

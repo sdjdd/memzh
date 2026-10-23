@@ -69,6 +69,77 @@
     { "id": "q28", "intent": "abstention", "q": "最近股市行情好不好", "expect": [] },
     { "id": "q29", "intent": "abstention", "q": "附近有便宜的健身房吗", "expect": [] },
     { "id": "q30", "intent": "abstention", "q": "周末想去爬山哪里合适", "expect": [] },
-    { "id": "q31", "intent": "abstention", "q": "有什么好看的科幻电影", "expect": [] }
+    { "id": "q31", "intent": "abstention", "q": "有什么好看的科幻电影", "expect": [] },
+
+    {
+      "id": "q32",
+      "intent": "exact",
+      "q": "十一去了哪里旅游",
+      "expect": ["大理", "洱海"],
+      "split": "heldout"
+    },
+    {
+      "id": "q33",
+      "intent": "temporal",
+      "q": "下个月有什么出行打算",
+      "expect": ["厦门"],
+      "split": "heldout"
+    },
+    {
+      "id": "q34",
+      "intent": "exact",
+      "q": "弟弟在乐团负责什么",
+      "expect": ["小提琴"],
+      "split": "heldout"
+    },
+    {
+      "id": "q35",
+      "intent": "entity-bridge",
+      "q": "生日给弟弟准备什么礼物",
+      "expect": ["小提琴"],
+      "split": "heldout"
+    },
+    {
+      "id": "q36",
+      "intent": "paraphrase",
+      "q": "平时做什么运动",
+      "expect": ["游泳"],
+      "split": "heldout"
+    },
+    {
+      "id": "q37",
+      "intent": "temporal",
+      "q": "最近在坚持什么锻炼",
+      "expect": ["游泳"],
+      "split": "heldout"
+    },
+    {
+      "id": "q38",
+      "intent": "exact",
+      "q": "家里新添了什么清洁电器",
+      "expect": ["机器人", "扫拖"],
+      "split": "heldout"
+    },
+    {
+      "id": "q39",
+      "intent": "entity-bridge",
+      "q": "搬新家前要置办什么",
+      "expect": ["机器人"],
+      "split": "heldout"
+    },
+    {
+      "id": "q40",
+      "intent": "abstention",
+      "q": "晚上有什么综艺推荐",
+      "expect": [],
+      "split": "heldout"
+    },
+    {
+      "id": "q41",
+      "intent": "abstention",
+      "q": "附近哪家理发店手艺好",
+      "expect": [],
+      "split": "heldout"
+    }
   ]
 }

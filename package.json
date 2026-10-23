@@ -1,12 +1,12 @@
 {
   "name": "memzh",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "keywords": [],
+  "license": "MIT",
   "type": "module",
   "main": "src/index.ts",
-  "private": true,
-  "license": "MIT",
   "scripts": {
     "test": "tsx tests/e2e.ts",
     "test:unit": "vitest run",

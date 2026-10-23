@@ -1,6 +1,8 @@
 // 评测：fetch 阶段重建语料并缓存三通道取数（调 API，一次）；
 // sweep 阶段读取缓存，离线扫 fuseChannels 参数网格（零 API 成本）；
 // reliability 阶段对语料做 N 轮纯抽取（不落库），度量空抽取率与实体漏标率。
+// 评测卫生：查询分 dev / heldout 两段——参数网格只在 dev 上选参，
+// heldout 仅报告不参与选参；提示词示例同样不得触碰两段的词汇（见 hygiene 单测）。
 // 用法：npx tsx eval/run.ts [fetch | sweep | all | reliability [runs]]
 import { createHash } from "node:crypto";
 import fs from "node:fs";
@@ -25,6 +27,7 @@ import {
   evaluate,
   INTENTS,
   matchesTerm,
+  splitOf,
   type CacheEntry,
   type EvalQuery,
   type Metrics,
@@ -159,7 +162,7 @@ async function fetchPhase(): Promise<void> {
     entries.push({ ...q, covered, fetches });
     const bm25Info = fetches.bm25 ? String(fetches.bm25.length) : "不可用";
     console.log(
-      `[${q.id}] ${q.q}  bm25=${bm25Info} 实体=${fetches.entityMatches.length}` +
+      `[${q.id}${splitOf(q) === "heldout" ? "*" : ""}] ${q.q}  bm25=${bm25Info} 实体=${fetches.entityMatches.length}` +
         (covered ? "" : "  !! 语料未覆盖"),
     );
     // 每条 query 间隔发送，避免持续高频触发账号限流
@@ -204,6 +207,8 @@ async function sweepPhase(): Promise<void> {
       console.log(`  [${e.id}] ${e.q}  expect=${JSON.stringify(e.expect)}`);
   }
   const judged = entries.filter((e) => e.covered);
+  const devEntries = judged.filter((e) => splitOf(e) === "dev");
+  const heldoutEntries = judged.filter((e) => splitOf(e) === "heldout");
 
   console.log("\n===== 缓存分布 =====");
   const bm25Raw = entries
@@ -221,10 +226,16 @@ async function sweepPhase(): Promise<void> {
 
   console.log("\n===== 基线（DEFAULT_SCORING + 自适应 BM25） =====");
   console.log(`全体: ${fmt(evaluate(judged, {}, JUDGE_TOPK))}`);
-  for (const intent of INTENTS) {
-    const sub = judged.filter((e) => e.intent === intent);
-    if (sub.length > 0)
-      console.log(`  ${intent}: ${fmt(evaluate(sub, {}, JUDGE_TOPK))} (n=${sub.length})`);
+  for (const [label, subset] of [
+    ["dev", devEntries],
+    ["heldout", heldoutEntries],
+  ] as const) {
+    console.log(`  ${label}: ${fmt(evaluate(subset, {}, JUDGE_TOPK))} (n=${subset.length})`);
+    for (const intent of INTENTS) {
+      const sub = subset.filter((e) => e.intent === intent);
+      if (sub.length > 0)
+        console.log(`    ${intent}: ${fmt(evaluate(sub, {}, JUDGE_TOPK))} (n=${sub.length})`);
+    }
   }
 
   // 网格范围参考上方打印的 bm25 原始分分布设定
@@ -239,7 +250,7 @@ async function sweepPhase(): Promise<void> {
       for (const steep of STEEPNESS) {
         for (const minSim of MINSIMS) {
           const m = evaluate(
-            judged,
+            devEntries,
             {
               threshold,
               bm25Midpoint: mid,
@@ -280,12 +291,23 @@ async function sweepPhase(): Promise<void> {
     entityMinSim: best.minSim,
   };
   console.log(
-    `\n===== 最优参数逐意图细分（thr=${best.threshold} mid=${best.mid} steep=${best.steep} minSim=${best.minSim}） =====`,
+    `\n===== 最优参数逐意图细分（dev 网格选出：thr=${best.threshold} mid=${best.mid} steep=${best.steep} minSim=${best.minSim}） =====`,
   );
   for (const intent of INTENTS) {
-    const sub = judged.filter((e) => e.intent === intent);
+    const sub = devEntries.filter((e) => e.intent === intent);
     if (sub.length > 0)
       console.log(`  ${intent}: ${fmt(evaluate(sub, overrides, JUDGE_TOPK))} (n=${sub.length})`);
+  }
+
+  console.log(
+    `\n===== held-out（不参与网格选参，仅报告：thr=${best.threshold} mid=${best.mid} steep=${best.steep} minSim=${best.minSim}） =====`,
+  );
+  console.log(`  @默认参数: ${fmt(evaluate(heldoutEntries, {}, JUDGE_TOPK))}`);
+  console.log(`  @最优参数: ${fmt(evaluate(heldoutEntries, overrides, JUDGE_TOPK))}`);
+  for (const intent of INTENTS) {
+    const sub = heldoutEntries.filter((e) => e.intent === intent);
+    if (sub.length > 0)
+      console.log(`    ${intent}: ${fmt(evaluate(sub, overrides, JUDGE_TOPK))} (n=${sub.length})`);
   }
   console.log(
     `\n误报为零的最优: thr=${bestNoFp.threshold} mid=${bestNoFp.mid} steep=${bestNoFp.steep} minSim=${bestNoFp.minSim}  ${fmt(bestNoFp)}`,
@@ -299,6 +321,9 @@ async function sweepPhase(): Promise<void> {
         memoryCount: cache.memoryCount,
         cacheCreatedAt: cache.createdAt,
         baseline: evaluate(judged, {}, JUDGE_TOPK),
+        dev: evaluate(devEntries, {}, JUDGE_TOPK),
+        heldout: evaluate(heldoutEntries, {}, JUDGE_TOPK),
+        heldoutAtBest: evaluate(heldoutEntries, overrides, JUDGE_TOPK),
         best,
         bestNoFp,
         top: rows.slice(0, 50),
